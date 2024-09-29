@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./pomodoro-frontend
+    ports:
+      - "3000:80"  # Map port 80 of the container to port 3000 on your machine
+    networks:
+      - pomodoro-network
+
+  backend:
+    build:
+      context: ./pomodoro-backend
+    ports:
+      - "5000:5000"  # Map port 5000 of the container to port 5000 on your machine
+    networks:
+      - pomodoro-network
+
+networks:
+  pomodoro-network:
+    driver: bridge
+
